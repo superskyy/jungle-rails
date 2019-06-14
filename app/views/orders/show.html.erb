@@ -19,7 +19,7 @@
       </thead>
       <tbody>
 
-        <% enhanced_cart.each do |item| %>
+        <% @complete_order.each do |item| %>
           <%= render 'item', product: item[:product], quantity: item[:quantity]%>
         <% end %>
       </tbody>
