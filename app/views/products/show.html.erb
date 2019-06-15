@@ -24,6 +24,22 @@
           <dd><%= @product.price %></dd>
         </dl>
       </div>
+      <div>
+        <%= form_for :review, url: product_review_index_path(@product) do |f| %>
+          <h2>New Review</h2>
+            Description : <%= f.text_field :description %><br />
+            Rating : <%= f.select :rating, [1, 2, 3, 4, 5]%><br />
+            <%= f.submit %>
+        <% end %>
+      </div>
+      <div>
+        <% @sorted.each do |r| %>
+          <dd>Product ID: <%= r.product_id %></dd>
+          <dd>User ID: <%= r.user_id %></dd>
+          <dd>Product Review: <%= r.description %></dd>
+          <dd>Product Rating: <%= r.rating %></dd>
+        <% end %>
+      </div>
     </div>
 
   </article>

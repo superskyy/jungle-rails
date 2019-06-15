@@ -41,7 +41,13 @@ cat1.products.create!({
   image: open_asset('apparel1.jpg'),
   quantity: 10,
   price: 64.99
+}).review.create!({
+  product_id: 1, 
+  user_id: 1, 
+  description: "I like this shirt", 
+  rating:5
 })
+
 
 cat1.products.create!({
   name:  'Women\'s Zebra pants',
