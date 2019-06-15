@@ -25,19 +25,30 @@
         </dl>
       </div>
       <div>
-        <%= form_for :review, url: product_review_index_path(@product) do |f| %>
-          <h2>New Review</h2>
-            Description : <%= f.text_field :description %><br />
-            Rating : <%= f.select :rating, [1, 2, 3, 4, 5]%><br />
-            <%= f.submit %>
+        <% if current_user %>
+          <%= form_for :review, url: product_review_index_path(@product) do |f| %>
+            <h2>New Review</h2>
+              Description : <%= f.text_field :description %><br />
+              Rating : <%= f.select :rating, [1, 2, 3, 4, 5]%><br />
+              <%= f.submit %>
+          <% end %>
+        <% else %>
+          <p>You must <%= link_to "login", '/login' %> to leave a review.</p>
         <% end %>
       </div>
       <div>
         <% @sorted.each do |r| %>
-          <dd>Product ID: <%= r.product_id %></dd>
-          <dd>User ID: <%= r.user_id %></dd>
-          <dd>Product Review: <%= r.description %></dd>
-          <dd>Product Rating: <%= r.rating %></dd>
+          <br>
+          <br>
+          <br>
+          <br>
+            <div style="border: 1px solid grey">
+              <dd><strong>Product ID: </strong><i><%= r.product_id %></i></dd>
+              <dd><strong>User ID: </strong><i><%= r.user_id %></i></dd>
+              <dd><strong>Product Review: </strong><i>"<%= r.description %>"</i></dd>
+              <dd><strong>Product Rating: </strong><i><%= r.rating %></i></dd>
+            </div>
+          <br>
         <% end %>
       </div>
     </div>
