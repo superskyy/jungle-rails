@@ -1,5 +1,5 @@
 class ReviewController < ApplicationController
-	# before_filter :create, :destroy
+	before_filter :create, :destroy
 
 	def create
 		@review = Review.new(review_params)
@@ -24,8 +24,5 @@ class ReviewController < ApplicationController
     @review.destroy
     redirect_to "/products/#{params[:product_id]}"
 	end
-
-	
-	
 
 end
