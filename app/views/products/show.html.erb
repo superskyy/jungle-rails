@@ -47,11 +47,9 @@
               <dd><strong>User ID: </strong><i><%= r.user_id %></i></dd>
               <dd><strong>Product Review: </strong><i>"<%= r.description %>"</i></dd>
               <dd><strong>Product Rating: </strong><i><%= r.rating %></i></dd>
-            
-              <% if current_user.id == r.user_id %>
-                <%= link_to 'Delete', product_review_path(r.product_id, r.id), method: :delete, data: { confirm: 'Please Confirm?' }, class: "btn btn-danger btn-xs" %>
+              <% if current_user%>
+                <%= link_to 'Delete', product_review_path(r.product_id, r.id),method: :delete, data: { confirm: 'Please Confirm?' }, class: "btn btn-danger btn-xs" %>
               <% end %>
-        
             </div>
             <br>
         <% end %>
