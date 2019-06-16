@@ -36,19 +36,24 @@
           <p>You must <%= link_to "login", '/login' %> to leave a review.</p>
         <% end %>
       </div>
+        <br>
+        <br>
+        <br>
+        <br>
       <div>
         <% @sorted.each do |r| %>
-          <br>
-          <br>
-          <br>
-          <br>
             <div style="border: 1px solid grey">
               <dd><strong>Product ID: </strong><i><%= r.product_id %></i></dd>
               <dd><strong>User ID: </strong><i><%= r.user_id %></i></dd>
               <dd><strong>Product Review: </strong><i>"<%= r.description %>"</i></dd>
               <dd><strong>Product Rating: </strong><i><%= r.rating %></i></dd>
+            
+              <% if current_user.id == r.user_id %>
+                <%= link_to 'Delete', product_review_path(r.product_id, r.id), method: :delete, data: { confirm: 'Please Confirm?' }, class: "btn btn-danger btn-xs" %>
+              <% end %>
+        
             </div>
-          <br>
+            <br>
         <% end %>
       </div>
     </div>
