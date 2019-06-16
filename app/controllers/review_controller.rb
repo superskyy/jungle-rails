@@ -5,7 +5,6 @@ class ReviewController < ApplicationController
 		@review = Review.new(review_params)
 		@review.user_id = current_user
 		@review.product_id = params[:product_id]
-		
 
   	if @review.save
   		redirect_to "/products/#{params[:product_id]}"
